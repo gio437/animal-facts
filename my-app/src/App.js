@@ -29,14 +29,55 @@ function App() {
 
   getQuote();
 
+  const getCatQuote = () => {
+    fetch('https://cat-fact.herokuapp.com/facts')
+    .then(response => {
+    if (response.ok) {
+      return response.json(); // Parse the response data as JSON
+    } else {
+      throw new Error('API request failed');
+    }
+  })
+  .then(data => {
+    // Process the response data here
+    console.log(data); 
+  })
+  .catch(error => {
+    // Handle any errors here
+    console.error(error);
+  });
+  }
+
+  getCatQuote();
+
+  const populatePageCards = () => {
+
+  }
+
   return (
     <div className="App">
-      <div class='header'>
+      <div className='header'>
         <div>&#128021;</div>
-        <div>Breed</div>
+        <div>Dog Breeds</div>
+        <div>Dog Facts</div>
+        <div>Cat Facts</div>
+        <div>Shop</div>
+        <div>&#128008;</div>
       </div>
+      <div className='page-cards-container'>
+        <div className='page-cards'>
+          <div className='card'>c</div>
+          <div className='card'>c</div>
+          <div className='card'>c</div>
+          <div className='card'>c</div>
+        </div>
+      </div>
+      <footer>
+        Created By Giovanni Shathaia
+      </footer>
     </div>
   );
+  
 }
 
 export default App;
